@@ -6,7 +6,7 @@
 
 ## Ignores data
 *.csv
-
+*.xlsx
 
 ## Ignores results
 *.png
