@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    img {
+        display: none; 
+        width: 800px; 
+        height: 600px;
+    }
+    select {
+        padding: 10px;
+        background: #edf2ff;
+        border: none;
+        border-radius: 11px;
+        font-size: 105%;
+    }
+    </style>
+</head>
+
+<body>
+
+<h1>Select the graph you wish to display!</h1>
+
+<p>All graphs generated here are the result of data analysis conducted by scripts found here: <a href="https://github.com/Learningchipmunk/CANDEV2022_Mobilit-">github.com</a></p>
+<p>This analysis was conducted for the <a href="https://candev.statcan.gc.ca">CANDEV Data Challenge</a> using the data they provided for the 2020 Public Service Employee Survey.</p>
+
+<label for="study">Choose a study and year:</label>
+
+<select name="study" id="study">
+<optgroup label="Study of the mobility of minorities over time">
+    <option value="graph1_2018">2018</option>
+    <option value="graph1_2019">2019</option>
+    <option value="graph1_2020">2020</option>
+</optgroup>
+<optgroup label="Study of where they wish to go">
+    <option value="graph2_2018">2018</option>
+    <option value="graph2_2019">2019</option>
+    <option value="graph2_2020">2020</option>
+</optgroup>
+<optgroup label="Study of the different departments">
+    <option value="graph3_2018">2018</option>
+    <option value="graph3_2019">2019</option>
+    <option value="graph3_2020">2020</option>
+</optgroup>
+</select>
+
+<br><br>
+
+<button type="button"
+        onclick="show()" id="btnID">
+        <b>Generate graph!</b>
+</button>
+
+<br><br>
+
+<div id="graphs"></div>
+
+<script> 
+    var graph_names = ["graph1_2018","graph1_2019","graph1_2020","graph2_2018","graph2_2019","graph2_2020","graph3_2018","graph3_2019","graph3_2020"];
+
+    graph_names.forEach((item) => {
+        var img = document.createElement('img');
+        img.src = "./" + item + ".png";
+        img.alt = item;
+        img.id  = item;
+        document.getElementById('graphs').appendChild(img);
+    } )
+
+    function show() {
+        graph_names.forEach(item => document.getElementById(item).style.display = "none");
+        document.getElementById(document.getElementById('study').value).style.display = "block";
+    }
+</script>
+
+</body>
+</html>
