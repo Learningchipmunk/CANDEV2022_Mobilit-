@@ -12,3 +12,7 @@
 *.png
 Results/
 *.zip
+
+## Excpet photos for webpage
+!www/*.png
+!www/*/*.png

@@ -24,33 +24,93 @@
 <p>All graphs generated here are the result of data analysis conducted by scripts found here: <a href="https://github.com/Learningchipmunk/CANDEV2022_Mobilit-">github.com</a></p>
 <p>This analysis was conducted for the <a href="https://candev.statcan.gc.ca">CANDEV Data Challenge</a> using the data they provided for the 2020 Public Service Employee Survey.</p>
 
+<br><br>
+
+<b>Reasons to leave</b>
+<p>For each minority group or sub-group, we compared the reasons invoqued to leave the current position with the complementary group (people who don't belong to the selected minority).</p>
+<br>
+<b>Will to leave</b>
+<p>For each minority group or sub-group, we compared all the agencies and just the agencies where more than 40% of the group wants to leave its current position, and this with the complementary group (people who don't belong to the selected minority).</p>
+<br>
+<b>Timeline</b>
+<p>For eacch organisation, we compared the proportion of people considering to move in 2018, 2019 and 2020.</p>
+<br>
+<b>Principal component analysis</b>
+<p>Label 1: Quantifies, out of 10, the proportion of people who said they wanted to leave for certain in the following two years.
+<br>Label 2: Quantifies, out of 10, the proportion of people who said they were unsure about leaving within the next two years.
+<br>Label 3: Quantifies, out of 10, the proportion of people who are leaving out of the department, either to pursue a position in another department or agency, or to pursue a position outside the federal public service.
+<br>Label 4: Quantifies, out of 10, the proportion of people who are leaving for reasons stated as “Other”, namely unrelated to retirement, end of term, promotion in the same department, position in another department and agency or position outside the federal public service.
+</p>
+
+<br><br>
+
 <label for="study">Choose a study and year:</label>
 
 <select name="study" id="study">
 <option value="graph_time">Study of the evolution over time</option>
 <optgroup label="Study of the mobility of minorities">
-    <option value="graph1_sex">Sexual orientation</option>
-    <option value="graph1_gender">Gender</option>
+    <option value="graph1_0">Gender</option>
+    <option value="graph1_1">Indigenous</option>
+    <option value="graph1_2">Different indigenous populations</option>
+    <option value="graph1_3">Disability</option>
+    <option value="graph1_4">Sight disability</option>
+    <option value="graph1_5">Hearing disability</option>
+    <option value="graph1_6">Mobility issue</option>
+    <option value="graph1_7">Flexibility issue</option>
+    <option value="graph1_8">Mental health issue</option>
+    <option value="graph1_9">Sensory disability</option>
+    <option value="graph1_10">Chronic health condition</option>
+    <option value="graph1_11">Cognitive disability</option>
+    <option value="graph1_12">Intellectual disability</option>
+    <option value="graph1_13">Other disability</option>
+    <option value="graph1_14">Visible minority</option>
+    <option value="graph1_15">Black</option>
+    <option value="graph1_16">Chinese</option>
+    <option value="graph1_17">Sexual orientation</option>
+    <option value="graph1_18">Filipino</option>
+    <option value="graph1_19">Japanese</option>
+    <option value="graph1_20">Korean</option>
+    <option value="graph1_21">Indian sub-continent</option>
+    <option value="graph1_22">Southeasat asian</option>
+    <option value="graph1_23">Arabian</option>
+    <option value="graph1_24">Latin american</option>
+    <option value="graph1_25">Mixed origin</option>
+    <option value="graph1_26">Other visible minority</option>
 </optgroup>
 <optgroup label="Study of the reasons behind mobilities">
-    <option value="graph2_sex">Sexual orientation</option>
-    <option value="graph2_gender">Gender</option>
+    <option value="graph2_0">Gender</option>
+    <option value="graph2_1">Indigenous</option>
+    <option value="graph2_2">Different indigenous populations</option>
+    <option value="graph2_3">Disability</option>
+    <option value="graph2_4">Sight disability</option>
+    <option value="graph2_5">Hearing disability</option>
+    <option value="graph2_6">Mobility issue</option>
+    <option value="graph2_7">Flexibility issue</option>
+    <option value="graph2_8">Mental health issue</option>
+    <option value="graph2_9">Sensory disability</option>
+    <option value="graph2_10">Chronic health condition</option>
+    <option value="graph2_11">Cognitive disability</option>
+    <option value="graph2_12">Intellectual disability</option>
+    <option value="graph2_13">Other disability</option>
+    <option value="graph2_14">Visible minority</option>
+    <option value="graph2_15">Black</option>
+    <option value="graph2_16">Chinese</option>
+    <option value="graph2_17">Sexual orientation</option>
+    <option value="graph2_18">Filipino</option>
+    <option value="graph2_19">Japanese</option>
+    <option value="graph2_20">Korean</option>
+    <option value="graph2_21">Indian sub-continent</option>
+    <option value="graph2_22">Southeasat asian</option>
+    <option value="graph2_23">Arabian</option>
+    <option value="graph2_24">Latin american</option>
+    <option value="graph2_25">Mixed origin</option>
+    <option value="graph2_26">Other visible minority</option>
 </optgroup>
-
-<optgroup label="Study of the mobility of minorities over time">
-    <option value="graph1_2018">2018</option>
-    <option value="graph1_2019">2019</option>
-    <option value="graph1_2020">2020</option>
-</optgroup>
-<optgroup label="Study of where they wish to go">
-    <option value="graph2_2018">2018</option>
-    <option value="graph2_2019">2019</option>
-    <option value="graph2_2020">2020</option>
-</optgroup>
-<optgroup label="Study of the different departments">
-    <option value="graph3_2018">2018</option>
-    <option value="graph3_2019">2019</option>
-    <option value="graph3_2020">2020</option>
+<optgroup label="Principal component analysis">
+    <option value="graph3_1">Label 1</option>
+    <option value="graph3_2">Label 2</option>
+    <option value="graph3_3">Label 3</option>
+    <option value="graph3_4">Label 4</option>
 </optgroup>
 </select>
 
@@ -66,7 +126,7 @@
 <div id="graphs"></div>
 
 <script> 
-    var graph_names = ["graph1_2018","graph1_2019","graph1_2020","graph2_2018","graph2_2019","graph2_2020","graph3_2018","graph3_2019","graph3_2020", "graph1_sex", "graph2_sex", "graph_time", 'graph1_gender', 'graph2_gender'];
+    var graph_names = ["graph_time", "graph3_1", "graph3_2", "graph3_3", "graph3_4"];
 
     graph_names.forEach((item) => {
         var img = document.createElement('img');
@@ -74,10 +134,30 @@
         img.alt = item;
         img.id  = item;
         document.getElementById('graphs').appendChild(img);
-    } )
+    } );
+
+    [...Array(27).keys()].forEach((item) => {
+        var img = document.createElement('img');
+        item = "graph1_" + item
+        img.src = "./desire_to_leave/" + item + ".png";
+        img.alt = item;
+        img.id  = item;
+        document.getElementById('graphs').appendChild(img);
+    } );
+
+    [...Array(27).keys()].forEach((item) => {
+        var img = document.createElement('img');
+        item = "graph2_" + item
+        img.src = "./reasons_to_leave/" + item + ".png";
+        img.alt = item;
+        img.id  = item;
+        document.getElementById('graphs').appendChild(img);
+    } );
 
     function show() {
         graph_names.forEach(item => document.getElementById(item).style.display = "none");
+        [...Array(27).keys()].forEach(item => document.getElementById('graph1_'+item).style.display = "none");
+        [...Array(27).keys()].forEach(item => document.getElementById('graph2_'+item).style.display = "none");
         document.getElementById(document.getElementById('study').value).style.display = "block";
     }
 </script>
