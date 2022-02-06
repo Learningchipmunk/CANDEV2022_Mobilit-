@@ -10,9 +10,11 @@ import copy
 import seaborn as sns
 sns.set_style()
 
+DATA_PATH = '../Data/'
+
 def preprocess():
  
-    data_origin = pd.read_csv("../Data/subset-3-sous-ensemble-3.csv", encoding='latin1')
+    data_origin = pd.read_csv(DATA_PATH+"subset-3-sous-ensemble-3.csv", encoding='latin1')
     
     data = data_origin.copy()
     
@@ -38,10 +40,8 @@ def preprocess():
     # add unique ids to each participant
     data['ID'] = data['LEVEL1ID']*1000 + (data['SURVEYR']-2018)*100 + data['DEMCODE']-2011
     
-    
     #for col in data.columns:
         #print(col, '\t', len(data[col].unique()), '\t', type(data[col][0]), '\t', data[col][0])
-    
     
     data_questions = data.drop(columns = ['SURVEYR', 'DEMCODE', 'LEVEL1ID'])
     list_id = data_questions['ID'].unique()
@@ -62,8 +62,7 @@ def preprocess():
     data_agg['SURVEYR'] = (data_agg['ID'] // 100) % 10 + 2018
     data_agg['DEMCODE'] = data_agg['ID'] % 100 + 2011
     
-    data_path = '../Data/'
-    data_agg.to_csv(data_path+'Preprocessed_Data.csv', index=False)
+    data_agg.to_csv(DATA_PATH+'Preprocessed_Data.csv', index=False)
     
     
     data_with_label = data_agg[(data_agg['ANSWER1_163'] != 9999) & ((data_agg['ANSWER1_163'] != 0) & (data_agg['ANSWER2_163'] != 0))]
@@ -83,6 +82,5 @@ def preprocess():
     
     data_with_label = data_with_label.drop(columns = supp_columns)
     
-    
-    data_with_label.to_csv(data_path+'Preprocessed_Data_with_Label.csv', index=False)
+    data_with_label.to_csv(DATA_PATH+'Preprocessed_Data_with_Label.csv', index=False)
     

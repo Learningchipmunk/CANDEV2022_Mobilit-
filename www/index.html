@@ -27,6 +27,16 @@
 <label for="study">Choose a study and year:</label>
 
 <select name="study" id="study">
+<option value="graph_time">Study of the evolution over time</option>
+<optgroup label="Study of the mobility of minorities">
+    <option value="graph1_sex">Sexual orientation</option>
+    <option value="graph1_gender">Gender</option>
+</optgroup>
+<optgroup label="Study of the reasons behind mobilities">
+    <option value="graph2_sex">Sexual orientation</option>
+    <option value="graph2_gender">Gender</option>
+</optgroup>
+
 <optgroup label="Study of the mobility of minorities over time">
     <option value="graph1_2018">2018</option>
     <option value="graph1_2019">2019</option>
@@ -56,7 +66,7 @@
 <div id="graphs"></div>
 
 <script> 
-    var graph_names = ["graph1_2018","graph1_2019","graph1_2020","graph2_2018","graph2_2019","graph2_2020","graph3_2018","graph3_2019","graph3_2020"];
+    var graph_names = ["graph1_2018","graph1_2019","graph1_2020","graph2_2018","graph2_2019","graph2_2020","graph3_2018","graph3_2019","graph3_2020", "graph1_sex", "graph2_sex", "graph_time", 'graph1_gender', 'graph2_gender'];
 
     graph_names.forEach((item) => {
         var img = document.createElement('img');

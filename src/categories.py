@@ -3,16 +3,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-#Not finished..
-
 sns.set_style()
 
-#import os 
-#dir_path = os.path.dirname(os.path.realpath(__file__))
-#print(dir_path)
-#print(os.dir())
-
-from helpers.data_preproc import *
+from helpers.data_preproc import preprocess
+from helpers.trad_demcode import DEMCODE_TO_ENG
 
 print('preprocessing...')
 
@@ -21,22 +15,21 @@ print('preprocessing...')
 print('done')
 
 PERCENTAGE = 40
-CATEGORIES = [2065,2066,2067,2068,2069]
-PONDERATED = True
+CATEGORIES = list(range(2011, 2013+1))
+XLABEL = "Gender"
+PONDERATED = False
 
 data=pd.read_csv("../Data/Preprocessed_Data_with_Label.csv", sep=',',encoding='latin1')
          
 want_leave = data[data['ANSWER1_163']>PERCENTAGE]
 want_leave = want_leave[want_leave['DEMCODE'].isin(CATEGORIES)]
-want_leave['LEAVE'] = 'yes'
-data['LEAVE'] = 'no'
 
-want_leave = pd.concat([want_leave, data[data['DEMCODE'].isin(CATEGORIES)]])
+data = data[data['DEMCODE'].isin(CATEGORIES)]
+
+#want_leave = pd.concat([want_leave, data[data['DEMCODE'].isin(CATEGORIES)]])
 
 #creating file path
 file_path = "desire_to_leave_" + str(CATEGORIES) + "_" + str(PERCENTAGE)
-
-
 
 if PONDERATED :
     
@@ -49,13 +42,21 @@ if PONDERATED :
 else :  
     
     file_path += "_count"
-      
-    sns.catplot(data=want_leave[want_leave['DEMCODE'].isin(CATEGORIES)], x='DEMCODE', hue = 'LEAVE', kind='count') 
-    plt.ylabel("number of agencies")
 
-plt.xlabel("Demographic properties")
-plt.title("Desire to leave its job according to the demographic properties")   
-plt.legend(title = 'More than ' + str(PERCENTAGE )+ '% want to leave')
-plt.savefig(file_path + ".png")
+    a = [want_leave[want_leave['DEMCODE']==i].shape[0] for i in CATEGORIES]
+    b = [data[data['DEMCODE']==i].shape[0] for i in CATEGORIES]
+
+    a = np.array(a)/want_leave.shape[0]
+    b = np.array(b)/data.shape[0]
+
+    plt.bar(np.array(CATEGORIES)-0.2, a, width=0.4, color='b', align='center', label='Agencies with high mobility')
+    plt.bar(np.array(CATEGORIES)+0.2, b, width=0.4, color='g', align='center', label='All agencies') 
+    plt.xticks(CATEGORIES, labels=[DEMCODE_TO_ENG[i] for i in CATEGORIES], rotation='horizontal')
+    plt.ylabel("Proportion of agencies with this population")
+
+plt.xlabel(XLABEL)
+plt.title("Will to leave their job according to the demographic properties")
+plt.legend()
+plt.savefig(file_path + ".png", bbox_inches="tight")
 
 print("done")
