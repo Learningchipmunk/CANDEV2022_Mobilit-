@@ -9,7 +9,9 @@ Data analysis conducted for the [CANDEV Data Challenge 2022](https://candev.stat
 
 ### How to Setup
 
+### Organisation
 
+* src/ : scripts to generate the graphs for the [visualization website](http://candev.mobility.ca.s3-website-us-east-1.amazonaws.com/)
 
 ### How to run the script
 
