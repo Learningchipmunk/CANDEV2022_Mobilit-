@@ -22,6 +22,9 @@ Data analysis conducted for the [CANDEV Data Challenge 2022](https://candev.stat
 ### Authors
 
 @Learningchipmunk
+
 @Alexis-BX
+
 @AlyZei
+
 @KatiaJDL
