@@ -10,9 +10,9 @@ sns.set_style()
 #print(dir_path)
 #print(os.dir())
 
-#from helpers.data_preproc import *
+from helpers.data_preproc import *
 
-#preprocess()
+preprocess()
 
 PERCENTAGE = 40
 CATEGORIES = [2065,2066,2067,2068,2069]
