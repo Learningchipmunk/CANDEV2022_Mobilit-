@@ -12,7 +12,7 @@ sns.set_style()
 
 def preprocess():
  
-    data_origin = pd.read_csv("Data/subset-3-sous-ensemble-3.csv", encoding='latin1')
+    data_origin = pd.read_csv("../Data/subset-3-sous-ensemble-3.csv", encoding='latin1')
     
     data = data_origin.copy()
     
@@ -39,8 +39,8 @@ def preprocess():
     data['ID'] = data['LEVEL1ID']*1000 + (data['SURVEYR']-2018)*100 + data['DEMCODE']-2011
     
     
-    for col in data.columns:
-        print(col, '\t', len(data[col].unique()), '\t', type(data[col][0]), '\t', data[col][0])
+    #for col in data.columns:
+        #print(col, '\t', len(data[col].unique()), '\t', type(data[col][0]), '\t', data[col][0])
     
     
     data_questions = data.drop(columns = ['SURVEYR', 'DEMCODE', 'LEVEL1ID'])
@@ -62,18 +62,8 @@ def preprocess():
     data_agg['SURVEYR'] = (data_agg['ID'] // 100) % 10 + 2018
     data_agg['DEMCODE'] = data_agg['ID'] % 100 + 2011
     
-    data_path = 'Data/'
+    data_path = '../Data/'
     data_agg.to_csv(data_path+'Preprocessed_Data.csv', index=False)
-    
-    
-    
-    data_agg[['ANSWER1_163', 'ANSWER2_163', 'ANSWER3_163', 'ANSWER4_163', 'ANSWER5_163', 'ANSWER6_163', 'ANSWER7_163']]
-    
-    
-    data_agg[['MOST_POSITIVE_OR_LEAST_NEGATIVE_163', 'NEUTRAL_OR_MIDDLE_CATEGORY_163', 'MOST_NEGATIVE_OR_LEAST_POSITIVE_163', 'SCORE5_163']]
-    
-    
-    np.load(data_path+"Dicts/QuestionID_to_strEnglish.npy", allow_pickle=True)
     
     
     data_with_label = data_agg[(data_agg['ANSWER1_163'] != 9999) & ((data_agg['ANSWER1_163'] != 0) & (data_agg['ANSWER2_163'] != 0))]
