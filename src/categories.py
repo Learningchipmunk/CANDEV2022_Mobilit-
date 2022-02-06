@@ -15,8 +15,8 @@ print('preprocessing...')
 print('done')
 
 PERCENTAGE = 40
-CATEGORIES = list(range(2011, 2013+1))
-XLABEL = "Gender"
+CATEGORIES = list(range(2063, 2064+1))
+XLABEL = "Other visible minority group"
 PONDERATED = False
 
 data=pd.read_csv("../Data/Preprocessed_Data_with_Label.csv", sep=',',encoding='latin1')
@@ -51,7 +51,7 @@ else :
 
     plt.bar(np.array(CATEGORIES)-0.2, a, width=0.4, color='b', align='center', label='Agencies with high mobility')
     plt.bar(np.array(CATEGORIES)+0.2, b, width=0.4, color='g', align='center', label='All agencies') 
-    plt.xticks(CATEGORIES, labels=[DEMCODE_TO_ENG[i] for i in CATEGORIES], rotation='horizontal')
+    plt.xticks(CATEGORIES, labels=[DEMCODE_TO_ENG[i] for i in CATEGORIES], rotation='45', ha='right')
     plt.ylabel("Proportion of agencies with this population")
 
 plt.xlabel(XLABEL)

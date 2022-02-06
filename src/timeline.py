@@ -23,7 +23,7 @@ data=pd.read_csv("../Data/Preprocessed_Data_with_Label.csv", sep=',',encoding='l
 #want_leave = pd.concat([want_leave, data[data['DEMCODE'].isin(CATEGORIES)]])
 
 #creating file path
-file_path = "timieline_" + str(CATEGORIES) + "_" + str(PERCENTAGE)
+file_path = "timeline_" + str(CATEGORIES) + "_" + str(PERCENTAGE)
 
 if PONDERATED :
     pass

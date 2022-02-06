@@ -14,8 +14,8 @@ print('preprocessing...')
 
 print('done')
 
-CATEGORIES = list(range(2011, 2013+1))
-XLABEL = "Gender"
+CATEGORIES = list(range(2063, 2064+1))
+XLABEL = "Other visible minority group"
 PONDERATED = False
 
 data=pd.read_csv("../Data/Preprocessed_Data_with_Label.csv", sep=',',encoding='latin1')
@@ -88,6 +88,7 @@ else :
     ax.set_xticklabels([DEMCODE_TO_ENG[i] for i in CATEGORIES], rotation='horizontal')
     plt.ylabel("Average percentage for the agencies")
 
+plt.xticks(rotation = 45, ha='right')
 plt.legend(ncol=1, bbox_to_anchor=(1, -0.1))
 plt.xlabel(XLABEL)
 plt.title("Reasons to consider leaving their job according to the demographic properties")
